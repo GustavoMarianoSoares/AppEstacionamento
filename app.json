@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "AppEstacionamento",
+    "slug": "AppEstacionamento",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
