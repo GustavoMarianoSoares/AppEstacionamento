@@ -37,16 +37,19 @@ export default function Historico({route, navigation}) {
         <ScrollView showsVerticalScrollIndicator={false}>
             {apiValues.map(apiValues => 
                 <TouchableOpacity style={styles.infosContainer} onPress= { () => navigation.navigate('Detalhes', {plate: plate, paid: apiValues.paid, time: apiValues.time, left: apiValues.left})}>
-                    <Text style={styles.infosPlate}>TEMPO ATUAL</Text>
-                    <Text style={styles.infosTime} key={apiValues.reservation}>
-                        {apiValues.time}
-                    </Text>
+                    <View>
+                        <Text style={styles.infosPlate}>TEMPO ATUAL</Text>
+                        <Text style={styles.infosTime} key={apiValues.reservation}>
+                            {apiValues.time}
+                        </Text>
+                    </View>
 
-                    <Text style={styles.infosPlate}>PAGAMENTO</Text>
-
-                    <Text style={styles.infosTime} key={apiValues.reservation}>
-                        {apiValues.paid.toString()}
-                    </Text>
+                    <View>
+                        <Text style={styles.infosPay}>PAGAMENTO</Text>
+                        <Text style={styles.infosPaid} key={apiValues.reservation}>
+                            {apiValues.paid.toString()}
+                        </Text>
+                    </View>
                 </TouchableOpacity>)}
         </ScrollView>
         </SafeAreaView>
