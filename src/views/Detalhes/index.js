@@ -8,8 +8,18 @@ import api from '../../services/api';
 export default function Detalhes({route, navigation}) {
 
     const value = route.params;
-    let plate = JSON.stringify(value.text)
+
+    let plate = JSON.stringify(value.plate)
     plate = JSON.parse(plate)
+
+    let paid = JSON.stringify(value.paid)
+    paid = JSON.parse(paid)
+
+    let time = JSON.stringify(value.time)
+    time = JSON.parse(time)
+
+    let left = JSON.stringify(value.left)
+    left = JSON.parse(left)
 
     const [text, setText] = useState('');
 
@@ -29,17 +39,17 @@ export default function Detalhes({route, navigation}) {
 
             <View style={styles.infos}>
                 <Text style={{color:'#9B9B9B'}}>STATUS</Text>
-                <Text style={{color:'#0A261D', fontSize: 24}}>Estacionado</Text>
+                <Text style={{color:'#0A261D', fontSize: 24}}>{left.toString()}</Text>
             </View>
 
             <View style={styles.infos}>
                 <Text style={{color:'#9B9B9B'}}>TEMPO ATUAL</Text>
-                <Text style={{color:'#0A261D', fontSize: 24}}>1h20min</Text>
+                <Text style={{color:'#0A261D', fontSize: 24}}>{time}</Text>
             </View>
 
             <View style={styles.infos}>
                 <Text style={{color:'#9B9B9B'}}>PAGAMENTO</Text>
-                <Text style={{color:'#0A261D', fontSize: 24}}>Pago</Text>
+                <Text style={{color:'#0A261D', fontSize: 24}}>{paid.toString()}</Text>
             </View>
         </View>
     </View>

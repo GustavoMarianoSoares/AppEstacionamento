@@ -11,12 +11,12 @@ export default function Historico({route, navigation}) {
     let plate = JSON.stringify(value.text)
     plate = JSON.parse(plate)
 
-    const [teste, setTeste] = useState([])
+    const [apiValues, setApiValues] = useState([])
 
     useEffect(() =>{
         api.get(`/parking/${plate}`)
         .then((response) => {
-          setTeste(response.data)
+          setApiValues(response.data)
       })
     }, [])
 
@@ -35,12 +35,17 @@ export default function Historico({route, navigation}) {
         </View>
         <SafeAreaView>
         <ScrollView showsVerticalScrollIndicator={false}>
-            {teste.map(teste => 
-                <TouchableOpacity style={styles.infosContainer} onPress= { () => navigation.navigate('Detalhes', {text: plate})}>
+            {apiValues.map(apiValues => 
+                <TouchableOpacity style={styles.infosContainer} onPress= { () => navigation.navigate('Detalhes', {plate: plate, paid: apiValues.paid, time: apiValues.time, left: apiValues.left})}>
                     <Text style={styles.infosPlate}>TEMPO ATUAL</Text>
-                    <Text style={styles.infosTime} key={teste.reservation}>
-                        {teste.time}
-                        {teste.paid.toString()}
+                    <Text style={styles.infosTime} key={apiValues.reservation}>
+                        {apiValues.time}
+                    </Text>
+
+                    <Text style={styles.infosPlate}>PAGAMENTO</Text>
+
+                    <Text style={styles.infosTime} key={apiValues.reservation}>
+                        {apiValues.paid.toString()}
                     </Text>
                 </TouchableOpacity>)}
         </ScrollView>
