@@ -24,7 +24,7 @@ export default function Saida({navigation}) {
               setShow(true),
               setTimeout(() => {setShow(false)}
               , 1000))
-              .catch( () => Alert.alert('Erro ao pagar a placa', 'Verifique se a placa indicada foi cadastrada') )
+              .catch( () => Alert.alert('Erro ao pagar a placa', 'Verifique se a placa indicada foi cadastrada ou já paga') )
             }
             payPlate()
           },
@@ -51,7 +51,7 @@ export default function Saida({navigation}) {
               setShow(true),
               setTimeout(() => {setShow(false)}
               , 1000))
-              .catch( () => Alert.alert('Erro ao liberar a saida da placa', 'Verifique se a placa indicada foi paga') )
+              .catch( () => Alert.alert('Erro ao liberar a saida da placa', 'Verifique se a placa indicada foi paga ou já liberada') )
             }
             quitPlate()
           },
