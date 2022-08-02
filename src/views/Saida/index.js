@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { Text, View, TextInput, TouchableOpacity, Alert  } from 'react-native';
 import styles from "./styles";
 import Header from "../../components/Header";
 import api from '../../services/api';
@@ -8,17 +8,51 @@ export default function Saida({navigation}) {
 
   const [text, setText] = useState('');
 
-  const payPlate = () =>{
-    api.post(`/parking/${text}/pay`)
-    .then( ({data}) => alert('Placa paga com sucesso') )
-    .catch( ({e}) => alert('Erro ao pagar a placa') )
-  }
+  const showConfirmDialogPay = () => {
+    return Alert.alert(
+      "Confirmar o pagamento da placa abaixo?",
+      "",
+      [
+        {
+          text: "Confirmar",
+          onPress: () => {
+            const payPlate = () =>{
+              api.post(`/parking/${text}/pay`)
+              .then( ({data}) => alert('Placa paga com sucesso') )
+              .catch( ({e}) => alert('Erro ao pagar a placa') )
+            }
+            payPlate()
+          },
+        },
+        {
+          text: "Voltar",
+        },
+      ]
+    );
+  };
 
-  const quitPlate = () =>{
-    api.post(`/parking/${text}/out`)
-    .then( ({data}) => alert('Placa pronta para saida') )
-    .catch( ({e}) => alert('Erro ao liberar a saida da placa') )
-  }
+  const showConfirmDialogQuit = () => {
+    return Alert.alert(
+      "Confirma a saída do veiculo da placa abaixo?",
+      "",
+      [
+        {
+          text: "Liberar Saída",
+          onPress: () => {
+            const quitPlate = () =>{
+              api.post(`/parking/${text}/out`)
+              .then( ({data}) => alert('Placa pronta para saida') )
+              .catch( ({e}) => alert('Erro ao liberar a saida da placa') )
+            }
+            quitPlate()
+          },
+        },
+        {
+          text: "Voltar",
+        },
+      ]
+    );
+  };
 
   return (
     <View>
@@ -46,11 +80,11 @@ export default function Saida({navigation}) {
         maxLength={8}
       />
 
-      <TouchableOpacity onPress={() => payPlate()} disabled = { text.length == 8 ? false : true } style={text.length == 8 ? styles.purpleButton : styles.disabledButton}>
+      <TouchableOpacity onPress={() => showConfirmDialogPay()} disabled = { text.length == 8 ? false : true } style={text.length == 8 ? styles.purpleButton : styles.disabledButton}>
         <Text style={text.length == 8 ? styles.whiteText : styles.grayText}>PAGAMENTO</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => quitPlate()} disabled = { text.length == 8 ? false : true } style={text.length == 8 ? styles.whiteButton : styles.disabledWhiteButton}>
+      <TouchableOpacity onPress={() => showConfirmDialogQuit()} disabled = { text.length == 8 ? false : true } style={text.length == 8 ? styles.whiteButton : styles.disabledWhiteButton}>
         <Text style={text.length == 8 ? styles.purpleText : styles.grayText}>SAÍDA</Text>
       </TouchableOpacity>
 
