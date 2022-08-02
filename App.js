@@ -6,6 +6,7 @@ import Entrada from "./src/views/Entrada";
 import Saida from "./src/views/Saida";
 import Menu from "./src/views/Menu";
 import Historico from "./src/views/Historico";
+import Detalhes from "./src/views/Detalhes";
 
 const Stack = createStackNavigator();
 
@@ -17,6 +18,7 @@ export default function App() {
         <Stack.Screen name='Saida' component={Saida}/>
         <Stack.Screen name='Menu' component={Menu}/>
         <Stack.Screen name='Historico' component={Historico}/>
+        <Stack.Screen name='Detalhes' component={Detalhes}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

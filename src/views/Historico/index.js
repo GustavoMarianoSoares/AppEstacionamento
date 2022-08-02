@@ -36,10 +36,11 @@ export default function Historico({route, navigation}) {
         <SafeAreaView>
         <ScrollView showsVerticalScrollIndicator={false}>
             {teste.map(teste => 
-                <TouchableOpacity style={styles.infosContainer}>
+                <TouchableOpacity style={styles.infosContainer} onPress= { () => navigation.navigate('Detalhes', {text: plate})}>
                     <Text style={styles.infosPlate}>TEMPO ATUAL</Text>
                     <Text style={styles.infosTime} key={teste.reservation}>
                         {teste.time}
+                        {teste.paid.toString()}
                     </Text>
                 </TouchableOpacity>)}
         </ScrollView>
