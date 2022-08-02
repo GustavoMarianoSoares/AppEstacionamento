@@ -2,10 +2,18 @@ import React, { useState } from 'react';
 import { Text, View, TextInput, TouchableOpacity } from 'react-native';
 import styles from "./styles";
 import Header from "../../components/Header";
+import api from '../../services/api';
 
 export default function Entrada({navigation}) {
 
   const [text, setText] = useState('');
+
+  const postPlate = () =>{
+    api.post('/parking', {
+      plate: text
+    }).then( ({data}) => alert('Placa cadastrada com sucesso') )
+    .catch( ({e}) => alert('Erro ao cadastrar a placa'))
+  }
 
   return (
     <View>
@@ -33,7 +41,7 @@ export default function Entrada({navigation}) {
         maxLength={8}
       />
 
-      <TouchableOpacity disabled = { text.length == 8 ? false : true } style={text.length == 8 ? styles.greenButton : styles.disabledButton}>
+      <TouchableOpacity onPress={() => postPlate()} disabled = { text.length == 8 ? false : true } style={text.length == 8 ? styles.greenButton : styles.disabledButton}>
         <Text style={text.length == 8 ? styles.whiteText : styles.grayText}>CONFIRMAR ENTRADA</Text>
       </TouchableOpacity>
       </View>
