@@ -34,6 +34,7 @@ export default function Entrada({navigation}) {
 
       <View style={styles.container}>
       <TextInput
+        autoCapitalize='characters'
         style={styles.textInput}
         placeholder="AAA-0000"
         onChangeText={newText => setText(newText)}
