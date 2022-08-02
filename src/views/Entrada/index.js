@@ -17,7 +17,7 @@ export default function Entrada({navigation}) {
     setShow(true),
     setTimeout(() => {setShow(false)}
     , 1000))
-    .catch( () => Alert.alert('Erro ao cadastrar a placa', ''))
+    .catch( () => Alert.alert('Erro ao cadastrar a placa', 'Verifique se a placa está correta ou já cadastrada'))
   }
 
   return (

@@ -24,7 +24,7 @@ export default function Saida({navigation}) {
               setShow(true),
               setTimeout(() => {setShow(false)}
               , 1000))
-              .catch( () => Alert.alert('Erro ao pagar a placa', '') )
+              .catch( () => Alert.alert('Erro ao pagar a placa', 'Verifique se a placa indicada foi cadastrada') )
             }
             payPlate()
           },
@@ -47,11 +47,11 @@ export default function Saida({navigation}) {
             const quitPlate = () =>{
               api.post(`/parking/${text}/out`)
               .then( () => 
-              Alert.alert('Placa pronta para saida',''), 
+              Alert.alert('Placa liberada para saida',''), 
               setShow(true),
               setTimeout(() => {setShow(false)}
               , 1000))
-              .catch( () => Alert.alert('Erro ao liberar a saida da placa', '') )
+              .catch( () => Alert.alert('Erro ao liberar a saida da placa', 'Verifique se a placa indicada foi paga') )
             }
             quitPlate()
           },

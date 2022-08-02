@@ -11,9 +11,11 @@ export default function Header() {
   return (
     <View style={styles.container}>
         <View style={styles.content}>
+            <TouchableOpacity onPress= { () => navigation.navigate('Entrada')}>
             <Image
                 source={logo}
             />
+            </TouchableOpacity>
             <TouchableOpacity onPress= { () => navigation.navigate('Menu')}>
               <Image
                   source={menu}
