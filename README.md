@@ -6,9 +6,21 @@ O projeto foi desenvolvido em Expo, que é uma biblioteca do React Native, nela 
 
 As intrusões para rodar o projeto são:
 
-npm i -g expo-cli //Instalar Expo globalmente na sua maquina
+### Instalar Expo globalmente na sua maquina
+npm i -g expo-cli 
 
-npm install axios OU yarn add axios //Biblioteca para consumo da API
+### Navegação entre telas react-native e expo
+npm install @react-navigation/native
+
+expo install react-native-screens react-native-safe-area-context
+
+npm install react-native-screens react-native-safe-area-context
+
+npm install @react-navigation/native-stack
+
+### Biblioteca para consumo da API
+
+npm install axios OU yarn add axios
 
 ### Facilidades
 
