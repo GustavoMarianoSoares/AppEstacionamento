@@ -39,14 +39,14 @@ export default function Historico({route, navigation}) {
                 <TouchableOpacity style={styles.infosContainer} onPress= { () => navigation.navigate('Detalhes', {plate: plate, paid: apiValues.paid, time: apiValues.time, left: apiValues.left})}>
                     <View>
                         <Text style={styles.infosPlate}>TEMPO ATUAL</Text>
-                        <Text style={styles.infosTime} key={apiValues.reservation}>
+                        <Text style={styles.infosTime}>
                             {apiValues.time}
                         </Text>
                     </View>
 
                     <View>
                         <Text style={styles.infosPay}>PAGAMENTO</Text>
-                        <Text style={styles.infosPaid} key={apiValues.reservation}>
+                        <Text style={styles.infosPaid}>
                             {apiValues.paid.toString()}
                         </Text>
                     </View>
