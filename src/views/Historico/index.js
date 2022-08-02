@@ -47,7 +47,7 @@ export default function Historico({route, navigation}) {
                     <View>
                         <Text style={styles.infosPay}>PAGAMENTO</Text>
                         <Text style={styles.infosPaid}>
-                            {apiValues.paid.toString()}
+                            {apiValues.paid == true ? 'Pago' : 'Não pago'}
                         </Text>
                     </View>
                 </TouchableOpacity>)}

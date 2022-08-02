@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { Text, View, TextInput, TouchableOpacity,ActivityIndicator, Alert } from 'react-native';
 import styles from "./styles";
 import Header from "../../components/Header";
 import api from '../../services/api';
@@ -7,12 +7,17 @@ import api from '../../services/api';
 export default function Entrada({navigation}) {
 
   const [text, setText] = useState('');
+  const [show, setShow] = useState(false)
 
   const postPlate = () =>{
     api.post('/parking', {
       plate: text
-    }).then( ({data}) => alert('Placa cadastrada com sucesso') )
-    .catch( ({e}) => alert('Erro ao cadastrar a placa'))
+    }).then( () => 
+    Alert.alert('Placa cadastrada com sucesso',''), 
+    setShow(true),
+    setTimeout(() => {setShow(false)}
+    , 1000))
+    .catch( () => Alert.alert('Erro ao cadastrar a placa', ''))
   }
 
   return (
@@ -45,6 +50,8 @@ export default function Entrada({navigation}) {
       <TouchableOpacity onPress={() => postPlate()} disabled = { text.length == 8 ? false : true } style={text.length == 8 ? styles.greenButton : styles.disabledButton}>
         <Text style={text.length == 8 ? styles.whiteText : styles.grayText}>CONFIRMAR ENTRADA</Text>
       </TouchableOpacity>
+
+      <ActivityIndicator style={styles.loading}size="large" color="#26C6DA" animating={show}/>
       </View>
     </View>
   );

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, View, TextInput, TouchableOpacity, Alert  } from 'react-native';
+import { Text, View, TextInput, TouchableOpacity, Alert, ActivityIndicator  } from 'react-native';
 import styles from "./styles";
 import Header from "../../components/Header";
 import api from '../../services/api';
@@ -7,19 +7,24 @@ import api from '../../services/api';
 export default function Saida({navigation}) {
 
   const [text, setText] = useState('');
+  const [show, setShow] = useState(false)
 
   const showConfirmDialogPay = () => {
     return Alert.alert(
       "Confirmar o pagamento da placa abaixo?",
-      "",
+      `${text}`,
       [
         {
           text: "Confirmar",
           onPress: () => {
             const payPlate = () =>{
               api.post(`/parking/${text}/pay`)
-              .then( ({data}) => alert('Placa paga com sucesso') )
-              .catch( ({e}) => alert('Erro ao pagar a placa') )
+              .then( () => 
+              Alert.alert('Placa paga com sucesso',''), 
+              setShow(true),
+              setTimeout(() => {setShow(false)}
+              , 1000))
+              .catch( () => Alert.alert('Erro ao pagar a placa', '') )
             }
             payPlate()
           },
@@ -34,15 +39,19 @@ export default function Saida({navigation}) {
   const showConfirmDialogQuit = () => {
     return Alert.alert(
       "Confirma a saída do veiculo da placa abaixo?",
-      "",
+      `${text}`,
       [
         {
           text: "Liberar Saída",
           onPress: () => {
             const quitPlate = () =>{
               api.post(`/parking/${text}/out`)
-              .then( ({data}) => alert('Placa pronta para saida') )
-              .catch( ({e}) => alert('Erro ao liberar a saida da placa') )
+              .then( () => 
+              Alert.alert('Placa pronta para saida',''), 
+              setShow(true),
+              setTimeout(() => {setShow(false)}
+              , 1000))
+              .catch( () => Alert.alert('Erro ao liberar a saida da placa', '') )
             }
             quitPlate()
           },
@@ -92,6 +101,8 @@ export default function Saida({navigation}) {
       <TouchableOpacity onPress= { () => navigation.navigate('Historico', {text: text})} disabled = { text.length == 8 ? false : true }>
         <Text style={styles.historic}>VER HISTÓRICO</Text>
       </TouchableOpacity>
+
+      <ActivityIndicator style={styles.loading}size="large" color="#26C6DA" animating={show}/>
       </View>
     </View>
   );

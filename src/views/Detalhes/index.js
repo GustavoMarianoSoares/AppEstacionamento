@@ -39,7 +39,7 @@ export default function Detalhes({route, navigation}) {
 
             <View style={styles.infos}>
                 <Text style={{color:'#9B9B9B'}}>STATUS</Text>
-                <Text style={{color:'#0A261D', fontSize: 24}}>{left.toString()}</Text>
+                <Text style={{color:'#0A261D', fontSize: 24}}>{left == true ? 'Não estacionado' : 'Estacionado' }</Text>
             </View>
 
             <View style={styles.infos}>
@@ -49,7 +49,7 @@ export default function Detalhes({route, navigation}) {
 
             <View style={styles.infos}>
                 <Text style={{color:'#9B9B9B'}}>PAGAMENTO</Text>
-                <Text style={{color:'#0A261D', fontSize: 24}}>{paid.toString()}</Text>
+                <Text style={{color:'#0A261D', fontSize: 24}}>{paid == true ? 'Pago' : 'Não pago'}</Text>
             </View>
         </View>
     </View>

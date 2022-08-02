@@ -89,4 +89,8 @@ viewExit:{
     borderTopRightRadius: 3,
     padding: 50
 },
+
+loading:{
+    marginTop: 50
+},
 });
