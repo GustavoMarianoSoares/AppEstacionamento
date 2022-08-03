@@ -6,6 +6,10 @@ O projeto foi desenvolvido em Expo, que é uma biblioteca do React Native, nela 
 
 As intrusões para rodar o projeto são:
 
+## Download do APK
+
+https://drive.google.com/file/d/10M2fLBlNZPPOSw6AeQ9B4L3TjLnebZC5/view?usp=sharing
+
 ### Instalar Expo globalmente na sua maquina
 npm i -g expo-cli 
 
