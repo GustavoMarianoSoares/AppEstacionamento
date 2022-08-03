@@ -1,14 +1,14 @@
 # AppEstacionamento
 
+## Download do APK
+
+https://drive.google.com/file/d/10M2fLBlNZPPOSw6AeQ9B4L3TjLnebZC5/view?usp=sharing
+
 ## Rodar o projeto do zero.
 
 O projeto foi desenvolvido em Expo, que é uma biblioteca do React Native, nela eu posso além de desenvolver para Android e iOS com Javascript, posso mexer nos arquivos Java/Kotlin do Android e Objective-C/Swift do iOS com liberdade.
 
 As intrusões para rodar o projeto são:
-
-## Download do APK
-
-https://drive.google.com/file/d/10M2fLBlNZPPOSw6AeQ9B4L3TjLnebZC5/view?usp=sharing
 
 ### Instalar Expo globalmente na sua maquina
 npm i -g expo-cli 
